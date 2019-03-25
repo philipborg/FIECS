@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIECS.Core", "FIECS.Core\FI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIECS.Attributes", "FIECS.Attributes\FIECS.Attributes.csproj", "{039AFC92-7F9F-4AFA-BD65-CD9FE33D14FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIECS.CodeGenerations", "FIECS.CodeGeneration\FIECS.CodeGenerations.csproj", "{A82D51BF-9DCB-40A4-ADE3-43CB7008EE5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FIECS.CodeGeneration", "FIECS.CodeGeneration\FIECS.CodeGeneration.csproj", "{A82D51BF-9DCB-40A4-ADE3-43CB7008EE5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
