@@ -14,4 +14,8 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FIECS.Core\FIECS.Core.csproj" />
+  </ItemGroup>
   </Project>

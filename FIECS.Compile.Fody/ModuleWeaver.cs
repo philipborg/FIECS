@@ -14,6 +14,6 @@ namespace FIECS.Compile.Fody
             yield break;
         }
 
-        public override bool ShouldCleanReference => false;
+        public override bool ShouldCleanReference => true;
     }
 }
