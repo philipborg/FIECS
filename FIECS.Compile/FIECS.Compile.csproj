@@ -14,9 +14,4 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\FIECS.Fody\FIECS.Fody.csproj" />
-  </ItemGroup>
-
-</Project>
+  </Project>
