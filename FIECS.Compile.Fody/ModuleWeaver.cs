@@ -1,5 +1,4 @@
 ﻿using Fody;
-using Mono.Cecil;
 using System.Collections.Generic;
 
 namespace FIECS.Compile.Fody
@@ -12,7 +11,8 @@ namespace FIECS.Compile.Fody
 
         public override IEnumerable<string> GetAssembliesForScanning()
         {
-            yield break;
+            yield return "netstandard";
+            yield return "mscorlib";
         }
 
         public override bool ShouldCleanReference => true;

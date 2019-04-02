@@ -1,6 +1,14 @@
-﻿namespace FIECS.Core
+﻿using System;
+
+namespace FIECS.Core
 {
     public sealed class Entity
     {
+        public readonly Guid Id;
+        public readonly IEngine engine;
+        public Entity(Guid id, IEngine engine)
+        {
+            Id = id;
+        }
     }
 }
