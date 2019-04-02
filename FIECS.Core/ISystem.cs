@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FIECS.Core
 {
-    interface System
+    interface ISystem
     {
     }
 }
