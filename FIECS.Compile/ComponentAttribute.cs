@@ -5,7 +5,7 @@ using System.Text;
 namespace FIECS.Core
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
-    public class Component : Attribute
+    public class ComponentAttribute : Attribute
     {
     }
 }
