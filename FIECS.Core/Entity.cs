@@ -10,5 +10,10 @@ namespace FIECS.Core
         {
             Id = id;
         }
+
+        internal void AddComponent(dynamic component)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

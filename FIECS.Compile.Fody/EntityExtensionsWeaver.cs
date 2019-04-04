@@ -1,17 +1,21 @@
 ﻿using Fody;
 using Mono.Cecil;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace FIECS.Compile.Fody
 {
     public sealed class EntityExtensionsWeaver
     {
-        BaseModuleWeaver _weaver;
-        TypeReference _componentAttribute;
+        readonly TypeReference _componentAttribute;
+        readonly ModuleDefinition _moduleDefinition;
+        readonly CustomAttribute _extensionAttribute;
 
-        public EntityExtensionsWeaver(BaseModuleWeaver moduleWeaver, TypeReference componentAttribute)
+        public EntityExtensionsWeaver(ModuleDefinition moduleDefinition, TypeReference componentAttribute)
         {
-            _weaver = moduleWeaver;
+            _componentAttribute = componentAttribute;
+            _moduleDefinition = moduleDefinition;
+            _extensionAttribute = _moduleDefinition.GetCustomAttribute(typeof(ExtensionAttribute));
         }
 
         public void Execute()
@@ -21,13 +25,23 @@ namespace FIECS.Compile.Fody
 
         private void ComponentEntityExtensions()
         {
-            var components = _weaver.GetTypesWithAttribute(_componentAttribute).Where(typeRef => typeRef.Attributes.HasFlag(TypeAttributes.Public));
-            for(var component in components)
+            var components = _moduleDefinition.GetTypesWithAttribute(_componentAttribute).Select(v => v.Key);
+            foreach(var component in components)
             {
                 var method = new MethodDefinition(
-                    $"Add{component.Name}",
+                    $"Put{component.Name.ToPascalCase(false)}",
                     MethodAttributes.Static | MethodAttributes.Final | MethodAttributes.Public,
+                    null
                     );
+
+                var entityParameter = new ParameterDefinition("entity", ParameterAttributes.None, _moduleDefinition.GetType("FIECS.Core", "Entity"));
+                entityParameter.CustomAttributes.Add(_extensionAttribute);
+                method.Parameters.Add(entityParameter);
+
+                var valueParameter = new ParameterDefinition(component.Name.ToCamelCase(false), ParameterAttributes.None, component);
+                method.Parameters.Add(valueParameter);
+
+                component.Methods.Add(method);
             }
         }
     }

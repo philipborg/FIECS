@@ -11,6 +11,7 @@ namespace FIECS.Compile.Fody
 
         public override IEnumerable<string> GetAssembliesForScanning()
         {
+            yield return "FIECS.Core";
             yield return "netstandard";
             yield return "mscorlib";
         }
